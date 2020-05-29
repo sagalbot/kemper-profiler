@@ -8134,11 +8134,6 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-cli-plugin-prettier@~0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/vue-cli-plugin-prettier/-/vue-cli-plugin-prettier-0.0.1.tgz#f776ffdaff5eb0435c4e4396f40c864a64706dce"
-  integrity sha512-eSaDPcgka88GBMgpod7vKsYQEIGf4VIJY9uUKYes56Dq40rQP/Tp0pOwVhMafsRtjgwnW+DVlCpUTy6/9V13FA==
-
 vue-eslint-parser@^7.0.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.1.0.tgz#9cdbcc823e656b087507a1911732b867ac101e83"
