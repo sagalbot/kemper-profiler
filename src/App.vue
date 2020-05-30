@@ -1,7 +1,11 @@
 <template>
-  <article>
+  <article
+    class="px-4 pt-12 sm:px-12 sm:pt-18 md:px-28 lg:px-8 xl:px-28 max-w-screen-xl"
+  >
     <header class="border-b border-gray-300 mb-8 pb-4">
-      <h1 class="font-extrabold text-gray-900 text-4xl tracking-tight">
+      <h1
+        class="font-extrabold text-gray-900 text-4xl tracking-tight leading-tight"
+      >
         Get your Kemper Profiling Amp
       </h1>
       <p class="text-gray-500 text-xl leading-normal">
