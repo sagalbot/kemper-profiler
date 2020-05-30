@@ -12,11 +12,15 @@
         All your favorite amps and effects, together in one little box.
       </p>
     </header>
+
+    <ImageGallery />
   </article>
 </template>
 
 <script>
+import ImageGallery from "./components/ImageGallery.vue";
 export default {
-  name: "App"
+  name: "App",
+  components: { ImageGallery }
 };
 </script>
