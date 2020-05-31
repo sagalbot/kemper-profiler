@@ -9,15 +9,15 @@
       <button
         v-for="({ src, alt }, key) in images"
         :key="key"
-        tabindex="0"
-        @click="currentImageKey = key"
-        @focus="currentImageKey = key"
         :class="{
           'border-2 border-gray-700': currentImageKey === key,
           'border border-gray-200 hover:border-gray-400':
             currentImageKey !== key
         }"
         class="mx-2 px-3 first:ml-0 last:mr-0 rounded-lg shadow-sm transition-colors duration-150 focus:outline-none focus:shadow-outline-gray"
+        tabindex="0"
+        @click="currentImageKey = key"
+        @focus="currentImageKey = key"
       >
         <img
           :src="src"
