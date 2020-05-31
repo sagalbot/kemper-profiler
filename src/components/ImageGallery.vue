@@ -13,6 +13,10 @@
         tabindex="0"
         @click="currentImageKey = key"
         @focus="currentImageKey = key"
+        @keydown.right="currentImageKey = nextImageKey"
+        @keydown.down="currentImageKey = nextImageKey"
+        @keydown.left="currentImageKey = prevImageKey"
+        @keydown.up="currentImageKey = prevImageKey"
         :class="{
           'border-2 border-gray-700': currentImageKey === key,
           'border border-gray-200 hover:border-gray-400':
@@ -59,6 +63,18 @@ export default {
     },
     currentImage() {
       return this.images[this.currentImageKey];
+    },
+    currentImageIndex() {
+      return this.imageKeys.indexOf(this.currentImageKey);
+    },
+    prevImageKey() {
+      return (
+        this.imageKeys[this.currentImageIndex - 1] ||
+        this.imageKeys[this.imageKeys.length - 1]
+      );
+    },
+    nextImageKey() {
+      return this.imageKeys[this.currentImageIndex + 1] || this.imageKeys[0];
     }
   }
 };
