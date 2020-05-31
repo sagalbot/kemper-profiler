@@ -3,8 +3,7 @@
     <img
       :src="currentImage.src"
       :alt="currentImage.alt"
-      class="mb-4 py-2 border border-gray-200 rounded-lg shadow-sm"
-      :class="imageCardClass"
+      class="mb-4 py-2 sm:py-3 border border-gray-200 rounded-lg shadow-sm"
     />
     <nav class="flex flex-row justify-between">
       <button
