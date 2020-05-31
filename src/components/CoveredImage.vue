@@ -2,13 +2,15 @@
   <img
     :src="props.src"
     :alt="props.alt"
-    :title="props.alt"
-    class="border border-gray-200 rounded-lg"
+    :class="`object-cover h-full w-full ${data.staticClass || ''}`"
+    v-on="listeners"
+    v-bind="data.attrs"
   />
 </template>
 
 <script>
 export default {
+  name: "CoveredImage",
   props: {
     src: {
       required: true,
