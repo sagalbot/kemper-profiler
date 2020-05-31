@@ -12,11 +12,18 @@
         All your favorite amps and effects, together in one little box.
       </p>
     </header>
+
+    <div class="relative lg:flex flex-row items-start w-full">
+      <ImageGallery class="lg:w-1/2 lg:sticky top-0 mb-8 lg:mb-0 flex-grow-0" />
+      <div style="min-height: 1000px;"></div>
+    </div>
   </article>
 </template>
 
 <script>
+import ImageGallery from "./components/ImageGallery.vue";
 export default {
-  name: "App"
+  name: "App",
+  components: { ImageGallery }
 };
 </script>
