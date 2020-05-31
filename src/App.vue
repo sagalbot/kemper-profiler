@@ -15,7 +15,7 @@
 
     <div class="relative lg:flex flex-row items-start w-full">
       <ImageGallery class="lg:w-1/2 lg:sticky top-0 mb-8 lg:mb-0 flex-grow-0" />
-      <div></div>
+      <div style="min-height: 1000px;"></div>
     </div>
   </article>
 </template>

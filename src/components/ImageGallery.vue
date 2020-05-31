@@ -3,39 +3,40 @@
     <img
       :src="currentImage.src"
       :alt="currentImage.alt"
-      class="mb-4"
+      class="mb-4 py-2 border border-gray-200 rounded-lg shadow-sm"
       :class="imageCardClass"
     />
     <nav class="flex flex-row justify-between">
       <button
-        v-for="({ src, alt }, key, index) in images"
+        v-for="({ src, alt }, key) in images"
         :key="key"
-        :tabindex="index + 1"
+        tabindex="0"
         @click="currentImageKey = key"
         @focus="currentImageKey = key"
-        class="max-h-12 sm:max-h-24 mx-2 first:ml-0 last:mr-0 transition-colors duration-150"
         :class="{
-          [imageCardClass]: true,
-          'border-2 border-gray-700': currentImageKey === key
+          'border-2 border-gray-700': currentImageKey === key,
+          'border border-gray-200 hover:border-gray-400':
+            currentImageKey !== key
         }"
+        class="mx-2 px-3 first:ml-0 last:mr-0 rounded-lg shadow-sm transition-colors duration-150 focus:outline-none focus:shadow-outline-gray"
       >
-        <CoveredImage :src="src" :alt="alt" />
+        <img
+          :src="src"
+          :alt="alt"
+          class="pointer-events-none object-cover h-full w-full"
+        />
       </button>
     </nav>
   </div>
 </template>
 
 <script>
-import CoveredImage from "@/components/CoveredImage.vue";
 export default {
   name: "ImageGallery",
-  components: { CoveredImage },
   data: () => ({
     currentImageKey: "front"
   }),
   computed: {
-    imageCardClass: () =>
-      "focus:outline-none focus:shadow-outline-gray px-3 border border-gray-200 hover:border-gray-400 rounded-lg shadow-sm",
     images: () => ({
       front: {
         src: "/img/kemper-front.jpg",
