@@ -51,7 +51,7 @@
           v-for="{ id, title, options, classes } in configurationOptions"
           :key="title"
           class="mb-12"
-          aria-label="Configuration Options"
+          :aria-label="`Configure ${title}`"
         >
           <h3 class="mb-2 font-medium text-lg text-gray-900" :id="id">
             {{ title }}
