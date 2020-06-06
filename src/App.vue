@@ -19,14 +19,13 @@
       />
       <div class="lg:w-1/2">
         <h2 class="flex flex-col mb-6">
-          <span class="font-medium text-sm text-gray-500 tracking-normal mb-1">
-            Starting at
-          </span>
+          <span class="font-medium text-sm text-gray-500 tracking-normal mb-1"
+            >Starting at</span
+          >
           <span
             class="tracking-tight leading-none text-gray-900 text-5xl font-extrabold"
+            >$1,799</span
           >
-            $1,799
-          </span>
         </h2>
         <p class="mb-4 text-lg text-gray-900">
           The KEMPER PROFILER™ is the leading-edge digital guitar amplifier and
@@ -41,6 +40,19 @@
           This is made possible by a radical, patented technology and concept
           which we call "PROFILING".
         </p>
+
+        <div v-for="{ title, options } in configurationOptions" :key="title">
+          <h3>{{ title }}</h3>
+          <ul>
+            <li v-for="{ label, body, upcharge } in options" :key="label">
+              <div>
+                <h4>{{ label }}</h4>
+                <p>{{ body }}</p>
+              </div>
+              <p v-if="upcharge">+ ${{ upcharge }}</p>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </article>
@@ -50,6 +62,65 @@
 import ImageGallery from "./components/ImageGallery.vue";
 export default {
   name: "App",
-  components: { ImageGallery }
+  components: { ImageGallery },
+  data: () => ({
+    selectedConfiguration: {
+      "Form Factor": "Profiler Head",
+      "Power Amp": "None",
+      "Foot Controller": "None",
+    },
+  }),
+  computed: {
+    configurationOptions() {
+      return [
+        {
+          title: "Form Factor",
+          options: [
+            {
+              label: "Profiler Head",
+              body:
+                "Compact amplifier head, perfect for a speaker cabinet or desk.",
+              upcharge: 0,
+            },
+            {
+              label: "Profiler Rack",
+              body: "3U rackmount version of the classic profiling amplifier.",
+              upcharge: 0,
+            },
+          ],
+        },
+        {
+          title: "Power Amp",
+          options: [
+            {
+              label: "None",
+              body: "Use in the studio or with your own power amp.",
+              upcharge: 0,
+            },
+            {
+              label: "Powered",
+              body: "Built-in 600W solid state power amp.",
+              upcharge: 449,
+            },
+          ],
+        },
+        {
+          title: "Foot Controller",
+          options: [
+            {
+              label: "None",
+              body: false,
+              upcharge: 0,
+            },
+            {
+              label: "Profiler Remote Foot Controller",
+              body: "3U rackmount version of the classic profiling amplifier.",
+              upcharge: 449,
+            },
+          ],
+        },
+      ];
+    },
+  },
 };
 </script>
