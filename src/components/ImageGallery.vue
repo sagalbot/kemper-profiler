@@ -5,17 +5,13 @@
       :alt="currentImage.alt"
       class="mb-4 py-2 sm:py-3 border border-gray-200 rounded-lg shadow-sm"
     />
-    <nav class="flex flex-row justify-between">
-      <button
+    <nav class="flex flex-row justify-between space-x-4">
+      <Selectable
         v-for="({ src, alt }, key) in images"
         :key="key"
-        :class="{
-          'border-2 border-gray-700': currentImageKey === key,
-          'border border-gray-200 hover:border-gray-400':
-            currentImageKey !== key
-        }"
-        class="mx-2 px-3 first:ml-0 last:mr-0 rounded-lg shadow-sm transition-colors duration-150 focus:outline-none focus:shadow-outline-gray"
-        tabindex="0"
+        tag="button"
+        class="px-3"
+        :selected="currentImageKey === key"
         @click="currentImageKey = key"
         @focus="currentImageKey = key"
       >
@@ -24,14 +20,16 @@
           :alt="alt"
           class="pointer-events-none object-cover h-full w-full"
         />
-      </button>
+      </Selectable>
     </nav>
   </div>
 </template>
 
 <script>
+import Selectable from "./Selectable";
 export default {
   name: "ImageGallery",
+  components: { Selectable },
   data: () => ({
     currentImageKey: "front"
   }),
@@ -53,9 +51,6 @@ export default {
           "Kemper Profiling amplifier viewed from an rear, displaying the unit connection inputs and outputs."
       }
     }),
-    imageKeys() {
-      return Object.keys(this.images);
-    },
     currentImage() {
       return this.images[this.currentImageKey];
     }
