@@ -65,12 +65,15 @@
               @keydown.space="selectOption(title, label)"
             >
               <div :class="optionClasses || ''">
-                <h4 class="text-sm font-medium" :class="{ 'mb-2': body }">
+                <h4
+                  class="text-sm font-medium text-gray-900"
+                  :class="{ 'mb-2': body }"
+                >
                   {{ label }}
                 </h4>
                 <p v-if="body" class="text-gray-500 text-sm">{{ body }}</p>
               </div>
-              <p v-if="upCharge" class="text-sm flex-shrink-0">
+              <p v-if="upCharge" class="text-sm flex-shrink-0 text-gray-900">
                 + ${{ upCharge }}
               </p>
             </Selectable>
