@@ -48,19 +48,29 @@
         </div>
 
         <div
-          v-for="{ title, options, classes } in configurationOptions"
+          v-for="{ id, title, options, classes } in configurationOptions"
           :key="title"
           class="mb-12"
         >
-          <h3 class="mb-2 font-medium text-lg text-gray-900">{{ title }}</h3>
-          <ol class="space-y-4" :class="classes || ''">
+          <h3 class="mb-2 font-medium text-lg text-gray-900" :id="id">
+            {{ title }}
+          </h3>
+          <ol
+            class="space-y-4"
+            :class="classes || ''"
+            role="radiogroup"
+            :aria-labelledby="id"
+          >
             <Selectable
               v-for="{ label, body, upCharge, optionClasses } in options"
               tag="li"
+              role="radio"
               class="px-6 py-5 cursor-pointer flex justify-between items-center flex-1"
               :key="label"
-              :selected="isOptionSelected(title, label)"
               :default-border-shade="300"
+              :selected="isOptionSelected(title, label)"
+              :aria-checked="isOptionSelected(title, label)"
+              :aria-label="`${label}`"
               @click="selectOption(title, label)"
               @keydown.space="selectOption(title, label)"
             >
@@ -73,7 +83,11 @@
                 </h4>
                 <p v-if="body" class="text-gray-500 text-sm">{{ body }}</p>
               </div>
-              <p v-if="upCharge" class="text-sm flex-shrink-0 text-gray-900">
+              <p
+                v-if="upCharge"
+                class="text-sm flex-shrink-0 text-gray-900"
+                :aria-label="`Adds ${upCharge} dollars to total price.`"
+              >
                 + ${{ upCharge }}
               </p>
             </Selectable>
@@ -102,6 +116,7 @@ export default {
     configurationOptions() {
       return [
         {
+          id: "FormFactor",
           title: "Form Factor",
           classes: "sm:flex sm:justify-evenly sm:space-y-0 sm:space-x-4",
           options: [
@@ -121,6 +136,7 @@ export default {
           ]
         },
         {
+          id: "PowerAmp",
           title: "Power Amp",
           options: [
             {
@@ -136,6 +152,7 @@ export default {
           ]
         },
         {
+          id: "FootController",
           title: "Foot Controller",
           options: [
             {
