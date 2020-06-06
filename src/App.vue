@@ -41,6 +41,8 @@
           This is made possible by a radical, patented technology and concept
           which we call "PROFILING".
         </p>
+        <h4 class="mb-4">Specifications</h4>
+        <SpecificationDefinitionList />
       </div>
     </div>
   </article>
@@ -48,8 +50,9 @@
 
 <script>
 import ImageGallery from "./components/ImageGallery.vue";
+import SpecificationDefinitionList from "./components/SpecificationDefinitionList.vue";
 export default {
   name: "App",
-  components: { ImageGallery }
+  components: { ImageGallery, SpecificationDefinitionList },
 };
 </script>
