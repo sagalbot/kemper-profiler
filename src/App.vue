@@ -85,7 +85,7 @@
               </div>
               <p
                 v-if="upCharge"
-                class="text-sm flex-shrink-0 text-gray-900"
+                class="text-sm flex-shrink-0 text-gray-900 ml-6"
                 :aria-label="`Adds ${upCharge} dollars to total price.`"
               >
                 + ${{ upCharge }}
