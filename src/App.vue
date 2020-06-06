@@ -55,17 +55,16 @@
           <h3 class="mb-2 font-medium text-lg text-gray-900">{{ title }}</h3>
           <ol class="space-y-4" :class="classes || ''">
             <Selectable
-              v-for="{ label, body, upCharge, classes } in options"
+              v-for="{ label, body, upCharge, optionClasses } in options"
               tag="li"
               class="px-6 py-5 cursor-pointer flex justify-between items-center flex-1"
-              :class="classes || ''"
               :key="label"
               :selected="isOptionSelected(title, label)"
               :default-border-shade="300"
               @click="selectOption(title, label)"
               @keydown.space="selectOption(title, label)"
             >
-              <div>
+              <div :class="optionClasses || ''">
                 <h4 class="text-sm font-medium" :class="{ 'mb-2': body }">
                   {{ label }}
                 </h4>
@@ -107,12 +106,14 @@ export default {
               label: "Profiler Head",
               body:
                 "Compact amplifier head, perfect for a speaker cabinet or desk.",
-              upCharge: 0
+              upCharge: 0,
+              optionClasses: "pr-6 sm:pr-0"
             },
             {
               label: "Profiler Rack",
               body: "3U rackmount version of the classic profiling amplifier.",
-              upCharge: 0
+              upCharge: 0,
+              optionClasses: "pr-6 sm:pr-0"
             }
           ]
         },

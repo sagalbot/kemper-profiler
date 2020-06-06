@@ -21,7 +21,7 @@ export default {
       props.tag,
       {
         class: {
-          "border-2 border-gray-700 outline-gray-700": props.selected,
+          "border border-gray-700 outline-gray-700": props.selected,
           [`border border-gray-${props.defaultBorderColor} hover:border-gray-400`]: !props.selected,
           "rounded-lg shadow-sm transition-colors duration-150 focus:outline-none focus:shadow-outline-gray": true,
           [data.staticClass || ""]: true
