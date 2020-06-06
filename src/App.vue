@@ -18,7 +18,7 @@
         class="lg:w-1/2 lg:sticky top-0 mb-8 lg:mb-0 lg:mr-8 flex-grow-0"
       />
       <div class="lg:w-1/2">
-        <div class="mb-12">
+        <section class="mb-12" aria-label="Product Description">
           <h2 class="flex flex-col mb-6">
             <span
               class="font-medium text-sm text-gray-500 tracking-normal mb-1"
@@ -45,12 +45,13 @@
             This is made possible by a radical, patented technology and concept
             which we call "PROFILING".
           </p>
-        </div>
+        </section>
 
-        <div
+        <section
           v-for="{ id, title, options, classes } in configurationOptions"
           :key="title"
           class="mb-12"
+          aria-label="Configuration Options"
         >
           <h3 class="mb-2 font-medium text-lg text-gray-900" :id="id">
             {{ title }}
@@ -92,14 +93,75 @@
               </p>
             </Selectable>
           </ol>
-        </div>
+        </section>
+
+        <section class="mb-12" aria-labelledby="#specifications">
+          <h4
+            id="specifications"
+            class="mb-2 font-medium text-lg text-gray-900"
+          >
+            Specifications
+          </h4>
+          <dl class="text-gray-900 text-sm grid grid-cols-3 gap-0">
+            <dt class="py-5 font-medium border-b border-t border-gray-200">
+              Amp Models
+            </dt>
+            <dd
+              class="py-5 col-span-2 text-right border-b border-t border-gray-200"
+            >
+              200
+            </dd>
+
+            <dt class="py-5 font-medium border-b border-gray-200">
+              Effects Loop
+            </dt>
+            <dd class="py-5 col-span-2 text-right border-b border-gray-200">
+              Yes
+            </dd>
+
+            <dt class="py-5 font-medium border-b border-gray-200">Inputs</dt>
+            <dd class="py-5 col-span-2 text-right border-b border-gray-200">
+              2 x 1/4”
+            </dd>
+
+            <dt class="py-5 font-medium border-b border-gray-200">Outputs</dt>
+            <dd class="py-5 col-span-2 text-right border-b border-gray-200">
+              1 x 1/4”, 2 x XLR, 2 x 1/4”
+            </dd>
+
+            <dt class="py-5 font-medium border-b border-gray-200">MIDI I/O</dt>
+            <dd class="py-5 col-span-2 text-right border-b border-gray-200">
+              In/Out/Thru
+            </dd>
+
+            <dt class="py-5 font-medium border-b border-gray-200">Height</dt>
+            <dd class="py-5 col-span-2 text-right border-b border-gray-200">
+              8.54”
+            </dd>
+
+            <dt class="py-5 font-medium border-b border-gray-200">Width</dt>
+            <dd class="py-5 col-span-2 text-right border-b border-gray-200">
+              14.88”
+            </dd>
+
+            <dt class="py-5 font-medium border-b border-gray-200">Depth</dt>
+            <dd class="py-5 col-span-2 text-right border-b border-gray-200">
+              6.81”
+            </dd>
+
+            <dt class="py-5 font-medium border-b border-gray-200">Weight</dt>
+            <dd class="py-5 col-span-2 text-right border-b border-gray-200">
+              11.73 lbs
+            </dd>
+          </dl>
+        </section>
       </div>
     </div>
   </article>
 </template>
 
 <script>
-import ImageGallery from "./components/ImageGallery.vue";
+import ImageGallery from "./components/ImageGallery";
 import Selectable from "./components/Selectable";
 
 export default {
