@@ -14,10 +14,10 @@
     </header>
 
     <div
-      class="relative lg:flex flex-row items-start mb-8 mx-4 sm:mx-12 md:mx-28 lg:mx-8 xl:mx-28 max-w-screen-xl"
+      class="relative lg:flex flex-row items-start mb-8 mx-4 sm:mx-12 md:mx-28 lg:mt-8 lg:mb-32 xl:mx-28 max-w-screen-xl"
     >
       <ImageGallery
-        class="lg:w-1/2 lg:sticky top-0 mb-8 lg:mb-0 lg:mr-8 flex-grow-0"
+        class="lg:w-1/2 lg:sticky top-8 mb-8 lg:mb-0 lg:mr-8 flex-grow-0"
       />
       <div class="lg:w-1/2">
         <section class="mb-12" aria-label="Product Description">
@@ -162,12 +162,16 @@
       </div>
     </div>
 
-    <footer class="bg-gray-50 border-t border-gray-200 py-6">
+    <footer
+      class="bg-gray-50 border-t border-gray-200 py-6 w-full lg:fixed bottom-0"
+    >
       <div
-        class="mx-4 sm:mx-12 md:mx-28 lg:mx-8 xl:mx-28 max-w-screen-xl flex items-center justify-end sm:justify-between "
+        class="mx-4 sm:mx-12 md:mx-28 lg:mx-8 xl:mx-28 max-w-screen-xl flex items-center justify-end sm:justify-between lg:space-x-8"
       >
-        <div class="flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-8">
-          <div class="hidden sm:flex flex-col">
+        <div
+          class="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-8 lg:w-2/3"
+        >
+          <div class="hidden sm:flex flex-col lg:w-1/2">
             <div class="flex items-center">
               <GlobeIcon class="h-5 w-5 mr-3 text-gray-400" />
               <h4 class="text-gray-900 text-sm font-medium">Free Shipping</h4>
@@ -176,7 +180,7 @@
               Get 2-day free shipping anywhere in North America.
             </p>
           </div>
-          <div class="hidden sm:flex flex-col">
+          <div class="hidden sm:flex flex-col lg:w-1/2">
             <div class="flex items-center">
               <ShieldIcon class="h-5 w-5 mr-3 text-gray-400" />
               <h4 class="text-gray-900 text-sm font-medium">2 Year Warranty</h4>
@@ -187,7 +191,7 @@
             </p>
           </div>
         </div>
-        <div class="flex items-center">
+        <div class="flex items-center lg:w-1/3">
           <div class="text-right mr-6">
             <h3
               aria-label="Total Price"
@@ -196,7 +200,7 @@
               ${{ price }}
             </h3>
             <p class="text-gray-500 text-sm hidden sm:block">
-              Need a financing?
+              Need financing?
               <a href="#" class="text-underline">Learn more</a>
             </p>
           </div>
