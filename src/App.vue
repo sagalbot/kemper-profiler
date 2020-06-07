@@ -62,10 +62,12 @@
             {{ group }}
           </h3>
           <ol
-            class="space-y-4"
+            class="space-y-4 focus:outline-none"
             :class="classes || ''"
             role="radiogroup"
-            :aria-labelledby="group.replace(' ', '')"
+            tabindex="-1"
+            :aria-label="`${group} Configurations`"
+            :aria-activedescendant="activeDescendantForGroup(group)"
           >
             <Selectable
               v-for="option in options"
@@ -75,9 +77,10 @@
               :class="{
                 'border-gray-300': !isOptionSelected(group, option)
               }"
-              :key="option.label"
+              :id="createOptionId(group, option)"
+              :key="createOptionId(group, option)"
               :selected="isOptionSelected(group, option)"
-              :aria-checked="isOptionSelected(group, option)"
+              :aria-checked="isOptionSelected(group, option) ? 'true' : 'false'"
               :aria-label="`${option.label}`"
               :tabindex="isOptionSelected(group, option) ? 0 : -1"
               @click="selectOption(group, option)"
@@ -262,6 +265,12 @@ export default {
     }
   },
   methods: {
+    activeDescendantForGroup(group) {
+      return this.createOptionId(group, this.selectedConfiguration[group]);
+    },
+    createOptionId(group, { label }) {
+      return `${group}-${label}`.replace(/\s/g, "");
+    },
     isOptionSelected(group, option) {
       return this.selectedConfiguration[group] === option;
     },
