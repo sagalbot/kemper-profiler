@@ -21,7 +21,7 @@
       />
       <div class="lg:w-1/2">
         <section class="mb-12" aria-label="Product Description">
-          <h2 class="flex flex-col mb-6">
+          <h3 class="flex flex-col mb-6">
             <span
               class="font-medium text-sm text-gray-500 tracking-normal mb-1"
             >
@@ -32,7 +32,7 @@
             >
               $1,799
             </span>
-          </h2>
+          </h3>
 
           <p class="mb-4 text-lg text-gray-900">
             The KEMPER PROFILER™ is the leading-edge digital guitar amplifier
@@ -112,12 +112,12 @@
         </section>
 
         <section class="mb-12" aria-labelledby="specifications">
-          <h4
+          <h3
             id="specifications"
             class="mb-2 font-medium text-lg text-gray-900"
           >
             Specifications
-          </h4>
+          </h3>
           <dl class="text-gray-900 text-sm grid grid-cols-3 gap-0">
             <dt class="py-5 font-medium border-b border-t border-gray-200">
               Amp Models
@@ -186,7 +186,7 @@
           <div class="hidden sm:flex flex-col lg:w-1/2 xl:w-64">
             <div class="flex items-center">
               <GlobeIcon class="h-5 w-5 mr-3 text-gray-400" />
-              <h4 class="text-gray-900 text-sm font-medium">Free Shipping</h4>
+              <h5 class="text-gray-900 text-sm font-medium">Free Shipping</h5>
             </div>
             <p class="hidden lg:block ml-8 mt-1 text-gray-500 text-sm">
               Get 2-day free shipping anywhere in North America.
@@ -195,7 +195,7 @@
           <div class="hidden sm:flex flex-col lg:w-1/2 xl:w-64">
             <div class="flex items-center">
               <ShieldIcon class="h-5 w-5 mr-3 text-gray-400" />
-              <h4 class="text-gray-900 text-sm font-medium">2 Year Warranty</h4>
+              <h5 class="text-gray-900 text-sm font-medium">2 Year Warranty</h5>
             </div>
             <p class="hidden lg:block ml-8 mt-1 text-gray-500 text-sm">
               If anything goes wrong in the first two years, we'll replace it
@@ -205,12 +205,9 @@
         </div>
         <div class="flex items-center lg:w-1/3">
           <div class="text-right mr-6">
-            <h3
-              aria-label="Total Price"
-              class="text-3xl font-bold tracking-tight text-gray-900 sm:mb-1"
-            >
-              ${{ price }}
-            </h3>
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:mb-1">
+              <span class="sr-only">Total Price: </span>${{ price }}
+            </h2>
             <p class="text-gray-500 text-sm hidden sm:block">
               Need financing?
               <a href="#" class="border-b border-gray-500">Learn more</a>
