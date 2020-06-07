@@ -65,9 +65,7 @@
             class="space-y-4 focus:outline-none"
             :class="classes || ''"
             role="radiogroup"
-            tabindex="-1"
             :aria-label="`${group} Configurations`"
-            :aria-activedescendant="activeDescendantForGroup(group)"
           >
             <Selectable
               v-for="option in options"
