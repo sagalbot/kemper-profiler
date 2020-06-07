@@ -1,13 +1,13 @@
 <template>
   <div>
-    <figure role="tabpanel" aria-label="View images of the Kemper Profiler.">
+    <div role="tabpanel" aria-label="View images of the Kemper Profiler.">
       <img
         :src="currentImage.src"
         :alt="currentImage.alt"
         class="mb-4 py-2 sm:py-3 border border-gray-200 rounded-lg shadow-sm"
       />
-    </figure>
-    <nav
+    </div>
+    <div
       class="flex flex-row justify-between space-x-4"
       id="GalleryTabPanel"
       role="tablist"
@@ -31,7 +31,7 @@
           class="pointer-events-none object-cover h-full w-full"
         />
       </Selectable>
-    </nav>
+    </div>
   </div>
 </template>
 

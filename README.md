@@ -1,3 +1,31 @@
+# Implementation Notes
+
+## Typography
+
+- I noticed that many of the line-height values in Figma didn't match Tailwind values. Rather than
+  creating custom values for each one of these, I rounded up or down to the closest existing value.
+
+## Spacing
+
+- There are a few instances where spacing in Figma does not align with Tailwind values. Normally when I encounter
+  these, I shoot a note over to the designer to see if it's intentional. In this case, I took my best guess as to
+  wheter something was intentional, or if I should round to the nearest value.
+
+## Image Gallery
+
+- Finding the right ARIA roles for this was challenging. It was a toss up between carousel and tablist. In the end,
+  I went with tablist because the behaviour seemed to align a bit better, and honestly, the documentation was better.
+  However, the `tablist` spec uses tabs to enter the `tablist`, and then the keyboard to navigate from there. That
+  didn't feel correct for my purposes, so I stuck with `tab` to cycle, but that may be a mistake.
+
+- My instinct was also to use a `<nav>` for the list of thumbnails, but you can't assign a `<nav>` the role of `tablist`,
+  because it implicitly has the role of `nav`. This seems a bit ridiculous, because it's a far more semantic element than
+  a `div` within this context.
+
+- ☝️ same thing applies for the wrapper element of the main image. My instinct was to use `<figure>` for that,
+  but you can't assign `figure` a role of `tabpanel`, so I'm stuck throwing `divs` around when it seems like there's
+  a more semantic option.
+
 ## Selectable Options Border Size
 
 The image thumbnails and configuration options share nearly identical border properties. All the states except for
@@ -16,9 +44,11 @@ There's a few ways to solve this problem:
   comma separated shadow declarations, so I could create custom utility classes that combine the shadows I need to make this work.
 
 - Use an absolutely positioned psuedo element. I was torn between hacking the box shadows or using a psuedo element, and I settled
-  on this approach. Both of those solutions requires writing some css, and the psuedo element seemed simpler off the get go. After
-  implementing, I'm still torn. It ended up being more complex than I'd hoped, and using pseudo elements makes it impossible to apply
-  tailwind classes from a consumer to the pseudo element which could suck in a real app environment. If I had time, I'd probably go
+  on this approach. Both of those solutions requires writing some css, and the psuedo element seemed simpler off the get go. I also
+  noticed that a lot of the accessibility documentation seems to really prefer psuedo elements for presentational stuff.
+
+  After implementing, I'm still torn. It ended up being more complex than I'd hoped, and using pseudo elements makes it impossible to apply
+  tailwind classes from a consumer to the pseudo element which would suck in a real app. If I had time, I'd probably go
   back and try the box-shadow hacks. I think it might end up as the simpler solution.
 
 ## Configuration Options
@@ -50,3 +80,8 @@ There's a few ways to solve this problem:
 - Starting price from the header doesn't match the base price in the footer when base config is selected, but I figured that's not important.
 
 - "Need a financing?" Is in the designs. Figured it's a typo.
+
+## Browsers
+
+- I develop in Firefox, but did a final pass in Chrome. I doubt there's any cross-browser issues, but if you notice something
+  weird, maybe give it a go in FF.
