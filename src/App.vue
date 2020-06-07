@@ -164,39 +164,29 @@
 
     <footer class="bg-gray-50 border-t border-gray-200 py-6">
       <div
-        class="mx-4 sm:mx-12 md:mx-28 lg:mx-8 xl:mx-28 max-w-screen-xl flex items-center justify-end sm:justify-between"
+        class="mx-4 sm:mx-12 md:mx-28 lg:mx-8 xl:mx-28 max-w-screen-xl flex items-center justify-end sm:justify-between "
       >
-        <ul class="hidden sm:block space-y-5">
-          <li class="flex items-center text-gray-900">
-            <svg
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              class="h-5 w-5 mr-3 text-gray-400"
-            >
-              <path
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-              />
-            </svg>
-            Free Shipping
-          </li>
-          <li class="flex items-center text-gray-900">
-            <svg
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              class="h-5 w-5 mr-3 text-gray-400"
-            >
-              <path
-                d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-              />
-            </svg>
-            2 Year Warranty
-          </li>
-        </ul>
-
+        <div class="flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-8">
+          <div class="hidden sm:flex flex-col">
+            <div class="flex items-center">
+              <GlobeIcon class="h-5 w-5 mr-3 text-gray-400" />
+              <h4 class="text-gray-900 text-sm font-medium">Free Shipping</h4>
+            </div>
+            <p class="hidden lg:block ml-8 mt-1 text-gray-500 text-sm">
+              Get 2-day free shipping anywhere in North America.
+            </p>
+          </div>
+          <div class="hidden sm:flex flex-col">
+            <div class="flex items-center">
+              <ShieldIcon class="h-5 w-5 mr-3 text-gray-400" />
+              <h4 class="text-gray-900 text-sm font-medium">2 Year Warranty</h4>
+            </div>
+            <p class="hidden lg:block ml-8 mt-1 text-gray-500 text-sm">
+              If anything goes wrong in the first two years, we'll replace it
+              for free.
+            </p>
+          </div>
+        </div>
         <div class="flex items-center">
           <div class="text-right mr-6">
             <h3
@@ -225,15 +215,17 @@
 <script>
 import ImageGallery from "./components/ImageGallery";
 import Selectable from "./components/Selectable";
+import ShieldIcon from "./components/ShieldIcon";
+import GlobeIcon from "./components/GlobeIcon";
 
 import {
-  defaultConfiguration,
-  configurationSectionOptions
+  configurationSectionOptions,
+  defaultConfiguration
 } from "./fixtures/data";
 
 export default {
   name: "App",
-  components: { Selectable, ImageGallery },
+  components: { Selectable, ImageGallery, GlobeIcon, ShieldIcon },
   data: () => ({
     selectedConfiguration: defaultConfiguration
   }),
