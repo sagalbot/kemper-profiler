@@ -15,3 +15,7 @@
 ## Specifications
 
 - Not much to note here, other than how awesome `grid` works for definition lists!
+
+## Footer
+
+- Starting price from the header doesn't match the base price in the footer when base config is selected.

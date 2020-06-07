@@ -1,8 +1,8 @@
 <template>
-  <article
-    class="mx-auto px-4 pt-12 sm:px-12 sm:pt-18 md:px-28 lg:px-8 xl:px-28 max-w-screen-xl"
-  >
-    <header class="border-b border-gray-300 mb-8">
+  <article class="mx-auto pt-12 sm:pt-18">
+    <header
+      class="border-b border-gray-300 mb-8 mx-4 sm:mx-12 md:mx-28 lg:mx-8 xl:mx-28 max-w-screen-xl"
+    >
       <h1
         class="font-extrabold text-gray-900 text-4xl tracking-tight leading-tight mb-4 sm:mb-3"
       >
@@ -13,9 +13,11 @@
       </h2>
     </header>
 
-    <div class="relative lg:flex flex-row items-start w-full">
+    <div
+      class="relative lg:flex flex-row items-start mb-8 mx-4 sm:mx-12 md:mx-28 lg:mt-8 lg:mb-32 xl:mx-28 max-w-screen-xl"
+    >
       <ImageGallery
-        class="lg:w-1/2 lg:sticky top-0 mb-8 lg:mb-0 lg:mr-8 flex-grow-0"
+        class="lg:w-1/2 lg:sticky top-8 mb-8 lg:mb-0 lg:mr-8 flex-grow-0"
       />
       <div class="lg:w-1/2">
         <section class="mb-12" aria-label="Product Description">
@@ -48,13 +50,13 @@
         </section>
 
         <section
-          v-for="{ id, title, options, classes } in configurationOptions"
-          :key="title"
+          v-for="{ id, section, options, classes } in configurationOptions"
+          :key="section"
           class="mb-12"
-          aria-label="Configuration Options"
+          :aria-label="`Configure ${section}`"
         >
           <h3 class="mb-2 font-medium text-lg text-gray-900" :id="id">
-            {{ title }}
+            {{ section }}
           </h3>
           <ol
             class="space-y-4"
@@ -63,33 +65,35 @@
             :aria-labelledby="id"
           >
             <Selectable
-              v-for="{ label, body, upCharge, optionClasses } in options"
+              v-for="option in options"
               tag="li"
               role="radio"
               class="px-6 py-5 cursor-pointer flex justify-between items-center flex-1"
-              :key="label"
+              :key="option.label"
               :default-border-shade="300"
-              :selected="isOptionSelected(title, label)"
-              :aria-checked="isOptionSelected(title, label)"
-              :aria-label="`${label}`"
-              @click="selectOption(title, label)"
-              @keydown.space="selectOption(title, label)"
+              :selected="isOptionSelected(section, option)"
+              :aria-checked="isOptionSelected(section, option)"
+              :aria-label="`${option.label}`"
+              @click="selectOption(section, option)"
+              @keydown.space="selectOption(section, option)"
             >
-              <div :class="optionClasses || ''">
+              <div :class="option.optionClasses || ''">
                 <h4
                   class="text-sm font-medium text-gray-900"
-                  :class="{ 'mb-2': body }"
+                  :class="{ 'mb-2': option.body }"
                 >
-                  {{ label }}
+                  {{ option.label }}
                 </h4>
-                <p v-if="body" class="text-gray-500 text-sm">{{ body }}</p>
+                <p v-if="option.body" class="text-gray-500 text-sm">
+                  {{ option.body }}
+                </p>
               </div>
               <p
-                v-if="upCharge"
+                v-if="option.upCharge"
                 class="text-sm flex-shrink-0 text-gray-900 ml-6"
-                :aria-label="`Adds ${upCharge} dollars to total price.`"
+                :aria-label="`Adds ${option.upCharge} dollars to total price.`"
               >
-                + ${{ upCharge }}
+                + ${{ option.upCharge }}
               </p>
             </Selectable>
           </ol>
@@ -157,87 +161,103 @@
         </section>
       </div>
     </div>
+
+    <footer
+      class="bg-gray-50 border-t border-gray-200 py-6 w-full lg:fixed bottom-0"
+    >
+      <div
+        class="mx-4 sm:mx-12 md:mx-28 lg:mx-8 xl:mx-28 max-w-screen-xl flex items-center justify-end sm:justify-between lg:space-x-8"
+      >
+        <div
+          class="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-8 lg:w-2/3"
+        >
+          <div class="hidden sm:flex flex-col lg:w-1/2 xl:w-64">
+            <div class="flex items-center">
+              <GlobeIcon class="h-5 w-5 mr-3 text-gray-400" />
+              <h4 class="text-gray-900 text-sm font-medium">Free Shipping</h4>
+            </div>
+            <p class="hidden lg:block ml-8 mt-1 text-gray-500 text-sm">
+              Get 2-day free shipping anywhere in North America.
+            </p>
+          </div>
+          <div class="hidden sm:flex flex-col lg:w-1/2 xl:w-64">
+            <div class="flex items-center">
+              <ShieldIcon class="h-5 w-5 mr-3 text-gray-400" />
+              <h4 class="text-gray-900 text-sm font-medium">2 Year Warranty</h4>
+            </div>
+            <p class="hidden lg:block ml-8 mt-1 text-gray-500 text-sm">
+              If anything goes wrong in the first two years, we'll replace it
+              for free.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center lg:w-1/3">
+          <div class="text-right mr-6">
+            <h3
+              aria-label="Total Price"
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:mb-1"
+            >
+              ${{ price }}
+            </h3>
+            <p class="text-gray-500 text-sm hidden sm:block">
+              Need financing?
+              <a href="#" class="border-b border-gray-500">Learn more</a>
+            </p>
+          </div>
+
+          <!--
+          Depending on how this button actually worked in a real environment,
+          this might be more semantic as an <a> instead of a <button>.
+          -->
+          <button
+            tabindex="0"
+            class="text-sm font-medium text-white px-5 py-3 rounded-lg bg-gray-900 hover:bg-gray-700 focus:bg-gray-900 focus:outline-none focus:shadow-outline-gray transition-colors duration-150"
+          >
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </footer>
   </article>
 </template>
 
 <script>
 import ImageGallery from "./components/ImageGallery";
 import Selectable from "./components/Selectable";
+import ShieldIcon from "./components/ShieldIcon";
+import GlobeIcon from "./components/GlobeIcon";
+
+import {
+  configurationSectionOptions,
+  defaultConfiguration
+} from "./fixtures/data";
 
 export default {
   name: "App",
-  components: { Selectable, ImageGallery },
+  components: { Selectable, ImageGallery, GlobeIcon, ShieldIcon },
   data: () => ({
-    selectedConfiguration: {
-      "Form Factor": "Profiler Head",
-      "Power Amp": "None",
-      "Foot Controller": "None"
-    }
+    selectedConfiguration: defaultConfiguration
   }),
   computed: {
     configurationOptions() {
-      return [
-        {
-          id: "FormFactor",
-          title: "Form Factor",
-          classes: "sm:flex sm:justify-evenly sm:space-y-0 sm:space-x-4",
-          options: [
-            {
-              label: "Profiler Head",
-              body:
-                "Compact amplifier head, perfect for a speaker cabinet or desk.",
-              upCharge: 0,
-              optionClasses: "pr-6 sm:pr-0"
-            },
-            {
-              label: "Profiler Rack",
-              body: "3U rackmount version of the classic profiling amplifier.",
-              upCharge: 0,
-              optionClasses: "pr-6 sm:pr-0"
-            }
-          ]
-        },
-        {
-          id: "PowerAmp",
-          title: "Power Amp",
-          options: [
-            {
-              label: "None",
-              body: "Use in the studio or with your own power amp.",
-              upCharge: 0
-            },
-            {
-              label: "Powered",
-              body: "Built-in 600W solid state power amp.",
-              upCharge: 449
-            }
-          ]
-        },
-        {
-          id: "FootController",
-          title: "Foot Controller",
-          options: [
-            {
-              label: "None",
-              body: false,
-              upCharge: 0
-            },
-            {
-              label: "Profiler Remote Foot Controller",
-              body: false,
-              upCharge: 449
-            }
-          ]
-        }
-      ];
+      return configurationSectionOptions;
+    },
+    price() {
+      return Object.keys(this.selectedConfiguration)
+        .reduce((basePrice, configurationKey) => {
+          const { upCharge } = this.selectedConfiguration[configurationKey];
+          return basePrice + upCharge;
+        }, 2717)
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
   },
   methods: {
-    isOptionSelected(title, label) {
-      return this.selectedConfiguration[title] === label;
+    isOptionSelected(section, option) {
+      return this.selectedConfiguration[section] === option;
     },
-    selectOption(title, label) {
-      return (this.selectedConfiguration[title] = label);
+    selectOption(section, option) {
+      return (this.selectedConfiguration[section] = option);
     }
   }
 };
