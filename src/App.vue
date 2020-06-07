@@ -14,7 +14,7 @@
     </header>
 
     <div
-      class="relative lg:flex flex-row items-start mb-8 mx-4 sm:mx-12 md:mx-28 lg:mt-8 lg:mb-32 xl:mx-28 max-w-screen-xl"
+      class="relative lg:flex flex-row items-start mb-32 mx-4 max-w-screen-xl sm:mb-40 sm:mx-12 md:mx-28 lg:mb-32 lg:mt-8 xl:mx-28"
     >
       <ImageGallery
         class="lg:w-1/2 lg:sticky top-8 mb-8 lg:mb-0 lg:mr-8 flex-grow-0"
@@ -175,7 +175,7 @@
     </div>
 
     <footer
-      class="bg-gray-50 border-t border-gray-200 py-6 w-full lg:fixed bottom-0"
+      class="bg-gray-50 border-t border-gray-200 py-6 w-full fixed bottom-0"
     >
       <div
         class="mx-4 sm:mx-12 md:mx-28 lg:mx-8 xl:mx-28 max-w-screen-xl flex items-center justify-end sm:justify-between lg:space-x-8"
