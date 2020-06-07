@@ -1,7 +1,7 @@
 <template>
-  <article class="mx-auto pt-12 sm:pt-18">
+  <article class="pt-12 sm:pt-18">
     <header
-      class="border-b border-gray-300 mb-8 mx-4 sm:mx-12 md:mx-28 lg:mx-8 xl:mx-28 max-w-screen-xl"
+      class="border-b border-gray-300 mb-8 mx-4 sm:mx-12 md:mx-28 xl:mx-28 max-w-screen-xl"
     >
       <h1
         class="font-extrabold text-gray-900 text-4xl tracking-tight leading-tight mb-4 sm:mb-3"
