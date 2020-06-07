@@ -171,7 +171,7 @@
         <div
           class="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-8 lg:w-2/3"
         >
-          <div class="hidden sm:flex flex-col lg:w-1/2">
+          <div class="hidden sm:flex flex-col lg:w-1/2 xl:w-64">
             <div class="flex items-center">
               <GlobeIcon class="h-5 w-5 mr-3 text-gray-400" />
               <h4 class="text-gray-900 text-sm font-medium">Free Shipping</h4>
@@ -180,7 +180,7 @@
               Get 2-day free shipping anywhere in North America.
             </p>
           </div>
-          <div class="hidden sm:flex flex-col lg:w-1/2">
+          <div class="hidden sm:flex flex-col lg:w-1/2 xl:w-64">
             <div class="flex items-center">
               <ShieldIcon class="h-5 w-5 mr-3 text-gray-400" />
               <h4 class="text-gray-900 text-sm font-medium">2 Year Warranty</h4>
@@ -201,12 +201,17 @@
             </h3>
             <p class="text-gray-500 text-sm hidden sm:block">
               Need financing?
-              <a href="#" class="text-underline">Learn more</a>
+              <a href="#" class="border-b border-gray-500">Learn more</a>
             </p>
           </div>
+
+          <!--
+          Depending on how this button actually worked in a real environment,
+          this might be more semantic as an <a> instead of a <button>.
+          -->
           <button
             tabindex="0"
-            class="text-sm font-medium text-white px-5 py-3 rounded-lg bg-gray-900 hover:bg-gray-700 focus:bg-gray-900 focus:outline-none focus:shadow-outline-gray"
+            class="text-sm font-medium text-white px-5 py-3 rounded-lg bg-gray-900 hover:bg-gray-700 focus:bg-gray-900 focus:outline-none focus:shadow-outline-gray transition-colors duration-150"
           >
             Buy Now
           </button>
