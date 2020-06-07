@@ -23,6 +23,14 @@ There's a few ways to solve this problem:
 
 ## Configuration Options
 
+- The configuration options implement the ARIA `radiogroup` role, using the roving tabindex pattern. This pattern doesn't
+  require setting `aria-activedescendant`, and instead sets the tabindex of any unselected options to `-1`. Tab allows you
+  to jump focus between `radiogroups`, and the arrow keys are used to adjust selections within them.
+
+- The `role="radiobutton"` items throw an error in accessibility checkers: "Form elements should have a visible label". I scoured the ARIA docs for the best solution here, and turns out the [official best practice example](https://w3c.github.io/aria-practices/examples/radio/radio-2/radio-2.html) fails too, so that's fun.
+
+  ![readme/accessibility-failz.png](readme/accessibility-failz.png)
+
 - The form factor options have different sizing than the other options:
 
   ![readme/profiler-head.png](readme/profiler-head.png)
@@ -30,10 +38,6 @@ There's a few ways to solve this problem:
   Note the `48px` padding on the right side. This is only present on the `xs` screen for these options.
 
 - The configuration options have a subtle difference in the default state: they used `border-gray-300` where the images use `border-gray-200`.
-
-- The `role="radiobutton"` items throw an error in accessibility checkers: "Form elements should have a visible label". I scoured the ARIA docs for the best practice here, and turns out the [official best practice example](https://w3c.github.io/aria-practices/examples/radio/radio-2/radio-2.html) fails too, so that's fun.
-
-  ![readme/accessibility-failz.png](readme/accessibility-failz.png)
 
 ## Specifications
 
