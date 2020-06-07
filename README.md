@@ -41,4 +41,8 @@ There's a few ways to solve this problem:
 
 ## Footer
 
-- Starting price from the header doesn't match the base price in the footer when base config is selected.
+- During accessibility testing I learned that SVGs should have `role="img"` and `<title>` tags as the alternative to `alt`.
+
+- Starting price from the header doesn't match the base price in the footer when base config is selected, but I figured that's not important.
+
+- "Need a financing?" Is in the designs. Figured it's a typo.
