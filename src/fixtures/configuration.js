@@ -1,4 +1,4 @@
-const configurationSections = {
+const configurationGroupTitles = {
   formFactor: "Form Factor",
   powerAmp: "Power Amp",
   footController: "Foot Controller"
@@ -45,29 +45,29 @@ const footControllerOptions = {
   }
 };
 
-const configurationSectionOptions = [
-  {
-    section: configurationSections.formFactor,
+const configurationGroups = {
+  [configurationGroupTitles.formFactor]: {
+    group: configurationGroupTitles.formFactor,
     classes: "sm:flex sm:justify-evenly sm:space-y-0 sm:space-x-4",
     options: [formFactorOptions.profilerHead, formFactorOptions.profilerRack]
   },
-  {
-    section: configurationSections.powerAmp,
+  [configurationGroupTitles.powerAmp]: {
+    group: configurationGroupTitles.powerAmp,
     options: [powerAmpOptions.none, powerAmpOptions.powered]
   },
-  {
-    section: configurationSections.footController,
+  [configurationGroupTitles.footController]: {
+    group: configurationGroupTitles.footController,
     options: [
       footControllerOptions.none,
       footControllerOptions.remoteFootController
     ]
   }
-];
-
-const defaultConfiguration = {
-  [configurationSections.formFactor]: formFactorOptions.profilerHead,
-  [configurationSections.powerAmp]: powerAmpOptions.none,
-  [configurationSections.footController]: footControllerOptions.none
 };
 
-export { configurationSectionOptions, defaultConfiguration };
+const defaultConfiguration = {
+  [configurationGroupTitles.formFactor]: formFactorOptions.profilerHead,
+  [configurationGroupTitles.powerAmp]: powerAmpOptions.none,
+  [configurationGroupTitles.footController]: footControllerOptions.none
+};
+
+export { configurationGroups, defaultConfiguration };

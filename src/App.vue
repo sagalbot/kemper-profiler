@@ -50,19 +50,24 @@
         </section>
 
         <section
-          v-for="{ id, section, options, classes } in configurationOptions"
-          :key="section"
+          v-for="{ group, options, classes } in configurationGroups"
+          :key="group"
           class="mb-12"
-          :aria-label="`Configure ${section}`"
+          :aria-label="`Configure ${group}`"
         >
-          <h3 class="mb-2 font-medium text-lg text-gray-900" :id="id">
-            {{ section }}
+          <h3
+            class="mb-2 font-medium text-lg text-gray-900"
+            :id="group.replace(' ', '')"
+          >
+            {{ group }}
           </h3>
           <ol
-            class="space-y-4"
+            class="space-y-4 focus:outline-none"
             :class="classes || ''"
             role="radiogroup"
-            :aria-labelledby="id"
+            tabindex="-1"
+            :aria-label="`${group} Configurations`"
+            :aria-activedescendant="activeDescendantForGroup(group)"
           >
             <Selectable
               v-for="option in options"
@@ -70,14 +75,21 @@
               role="radio"
               class="px-6 py-5 cursor-pointer flex justify-between items-center flex-1"
               :class="{
-                'border-gray-300': !isOptionSelected(section, option)
+                'border-gray-300': !isOptionSelected(group, option)
               }"
-              :key="option.label"
-              :selected="isOptionSelected(section, option)"
-              :aria-checked="isOptionSelected(section, option)"
+              :id="createOptionId(group, option)"
+              :key="createOptionId(group, option)"
+              :selected="isOptionSelected(group, option)"
+              :aria-checked="isOptionSelected(group, option) ? 'true' : 'false'"
               :aria-label="`${option.label}`"
-              @click="selectOption(section, option)"
-              @keydown.space="selectOption(section, option)"
+              :tabindex="isOptionSelected(group, option) ? 0 : -1"
+              @click="selectOption(group, option)"
+              @focus="selectOption(group, option)"
+              @keydown.prevent.space="selectOption(group, option)"
+              @keydown.prevent.right="focusNextOption"
+              @keydown.prevent.down="focusNextOption"
+              @keydown.prevent.left="selectPrevOption"
+              @keydown.prevent.up="selectPrevOption"
             >
               <div :class="option.optionClasses || ''">
                 <h4
@@ -230,9 +242,9 @@ import ShieldIcon from "./components/ShieldIcon";
 import GlobeIcon from "./components/GlobeIcon";
 
 import {
-  configurationSectionOptions,
+  configurationGroups,
   defaultConfiguration
-} from "./fixtures/data";
+} from "./fixtures/configuration";
 
 export default {
   name: "App",
@@ -241,9 +253,7 @@ export default {
     selectedConfiguration: defaultConfiguration
   }),
   computed: {
-    configurationOptions() {
-      return configurationSectionOptions;
-    },
+    configurationGroups: () => configurationGroups,
     price() {
       return Object.keys(this.selectedConfiguration)
         .reduce((basePrice, configurationKey) => {
@@ -255,11 +265,39 @@ export default {
     }
   },
   methods: {
-    isOptionSelected(section, option) {
-      return this.selectedConfiguration[section] === option;
+    activeDescendantForGroup(group) {
+      return this.createOptionId(group, this.selectedConfiguration[group]);
     },
-    selectOption(section, option) {
-      return (this.selectedConfiguration[section] = option);
+    createOptionId(group, { label }) {
+      return `${group}-${label}`.replace(/\s/g, "");
+    },
+    isOptionSelected(group, option) {
+      return this.selectedConfiguration[group] === option;
+    },
+    selectOption(group, option) {
+      return (this.selectedConfiguration[group] = option);
+    },
+    /**
+     * This wouldn't work if there were more than two options.
+     * You'd have to get the parentNode, then the first child node.
+     * But there isn't, so enjoy the simplicity!
+     *
+     * @param {HTMLElement} target
+     */
+    focusNextOption({ target }) {
+      if (target.nextSibling) {
+        return target.nextSibling.focus();
+      }
+      return target.previousSibling.focus();
+    },
+    /**
+     * @param {HTMLElement} target
+     */
+    selectPrevOption({ target }) {
+      if (target.previousSibling) {
+        return target.previousSibling.focus();
+      }
+      return target.nextSibling.focus();
     }
   }
 };
