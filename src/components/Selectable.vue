@@ -10,21 +10,21 @@ export default {
     tag: {
       type: String,
       required: true
-    },
-    defaultBorderShade: {
-      type: Number,
-      default: 200
     }
   },
   render(createElement, { props, slots, data, listeners }) {
+    const boundClasses = data.class || {};
+    const staticClasses = data.staticClass || "";
+    const defaultClasses = `double-border-hack border relative rounded-lg shadow-sm transition-colors duration-150 focus:outline-none ${staticClasses}`;
+
     return createElement(
       props.tag,
       {
         class: {
-          "border border-gray-700 outline-gray-700": props.selected,
-          [`border border-gray-${props.defaultBorderColor} hover:border-gray-400`]: !props.selected,
-          "rounded-lg shadow-sm transition-colors duration-150 focus:outline-none focus:shadow-outline-gray": true,
-          [data.staticClass || ""]: true
+          "double-border-hack-selected border-transparent": props.selected,
+          "border-gray-200 hover:border-gray-400": !props.selected,
+          [defaultClasses]: true,
+          ...boundClasses
         },
         attrs: {
           tabindex: 0,
@@ -38,4 +38,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.double-border-hack:focus::after {
+  @apply shadow-outline-gray;
+}
+.double-border-hack::after {
+  @apply block absolute w-full h-full top-0 left-0 rounded-lg pointer-events-none transition-colors duration-150;
+  content: " ";
+}
+.double-border-hack-selected::after {
+  @apply border-2 border-gray-700;
+}
+</style>
