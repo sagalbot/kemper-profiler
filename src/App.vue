@@ -50,19 +50,22 @@
         </section>
 
         <section
-          v-for="{ id, section, options, classes } in configurationOptions"
+          v-for="{ section, options, classes } in configurationOptions"
           :key="section"
           class="mb-12"
           :aria-label="`Configure ${section}`"
         >
-          <h3 class="mb-2 font-medium text-lg text-gray-900" :id="id">
+          <h3
+            class="mb-2 font-medium text-lg text-gray-900"
+            :id="section.replace(' ', '')"
+          >
             {{ section }}
           </h3>
           <ol
             class="space-y-4"
             :class="classes || ''"
             role="radiogroup"
-            :aria-labelledby="id"
+            :aria-labelledby="section.replace(' ', '')"
           >
             <Selectable
               v-for="option in options"
@@ -76,6 +79,7 @@
               :selected="isOptionSelected(section, option)"
               :aria-checked="isOptionSelected(section, option)"
               :aria-label="`${option.label}`"
+              :tabindex="isOptionSelected(section, option) ? 0 : -1"
               @click="selectOption(section, option)"
               @keydown.space="selectOption(section, option)"
             >
