@@ -103,9 +103,10 @@
               <p
                 v-if="option.upCharge"
                 class="text-sm flex-shrink-0 text-gray-900 ml-6"
-                :aria-label="`Adds ${option.upCharge} dollars to total price.`"
               >
+                <span class="sr-only">This options adds </span>
                 + ${{ option.upCharge }}
+                <span class="sr-only">to total price.</span>
               </p>
             </Selectable>
           </ol>
