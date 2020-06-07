@@ -69,7 +69,9 @@
               tag="li"
               role="radio"
               class="px-6 py-5 cursor-pointer flex justify-between items-center flex-1"
-              :class="{ 'border-gray-300': !isOptionSelected(section, option) }"
+              :class="{
+                'border-gray-300': !isOptionSelected(section, option)
+              }"
               :key="option.label"
               :selected="isOptionSelected(section, option)"
               :aria-checked="isOptionSelected(section, option)"

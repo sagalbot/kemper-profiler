@@ -13,8 +13,9 @@ export default {
     }
   },
   render(createElement, { props, slots, data, listeners }) {
+    const boundClasses = data.class || {};
     const staticClasses = data.staticClass || "";
-    const defaultClasses = `double-border-hack border relative rounded-lg transition-colors duration-150 focus:outline-none ${staticClasses}`;
+    const defaultClasses = `double-border-hack border relative rounded-lg shadow-sm transition-colors duration-150 focus:outline-none ${staticClasses}`;
 
     return createElement(
       props.tag,
@@ -22,7 +23,8 @@ export default {
         class: {
           "double-border-hack-selected border-transparent": props.selected,
           "border-gray-200 hover:border-gray-400": !props.selected,
-          [defaultClasses]: true
+          [defaultClasses]: true,
+          ...boundClasses
         },
         attrs: {
           tabindex: 0,
@@ -41,7 +43,7 @@ export default {
   @apply shadow-outline-gray;
 }
 .double-border-hack::after {
-  @apply block absolute w-full h-full top-0 left-0 rounded-lg shadow-sm pointer-events-none transition-colors duration-150;
+  @apply block absolute w-full h-full top-0 left-0 rounded-lg pointer-events-none transition-colors duration-150;
   content: " ";
 }
 .double-border-hack-selected::after {
