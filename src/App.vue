@@ -111,7 +111,7 @@
           </ol>
         </section>
 
-        <section class="mb-12" aria-labelledby="#specifications">
+        <section class="mb-12" aria-labelledby="specifications">
           <h4
             id="specifications"
             class="mb-2 font-medium text-lg text-gray-900"
@@ -263,9 +263,6 @@ export default {
     }
   },
   methods: {
-    activeDescendantForGroup(group) {
-      return this.createOptionId(group, this.selectedConfiguration[group]);
-    },
     createOptionId(group, { label }) {
       return `${group}-${label}`.replace(/\s/g, "");
     },

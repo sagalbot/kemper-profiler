@@ -1,11 +1,18 @@
 <template>
   <div>
-    <img
-      :src="currentImage.src"
-      :alt="currentImage.alt"
-      class="mb-4 py-2 sm:py-3 border border-gray-200 rounded-lg shadow-sm"
-    />
-    <nav class="flex flex-row justify-between space-x-4">
+    <figure role="tabpanel" aria-label="View images of the Kemper Profiler.">
+      <img
+        :src="currentImage.src"
+        :alt="currentImage.alt"
+        class="mb-4 py-2 sm:py-3 border border-gray-200 rounded-lg shadow-sm"
+      />
+    </figure>
+    <nav
+      class="flex flex-row justify-between space-x-4"
+      id="GalleryTabPanel"
+      role="tablist"
+      aria-label="Image Gallery Thumbnails"
+    >
       <Selectable
         v-for="({ src, alt }, key) in images"
         :key="key"
@@ -14,6 +21,9 @@
         :selected="currentImageKey === key"
         @click="currentImageKey = key"
         @focus="currentImageKey = key"
+        role="tab"
+        :aria-selected="currentImageKey === key ? 'true' : 'false'"
+        aria-controls="GalleryTabPanel"
       >
         <img
           :src="src"
