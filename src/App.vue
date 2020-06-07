@@ -111,7 +111,7 @@
           </ol>
         </section>
 
-        <section class="mb-12" aria-labelledby="#specifications">
+        <section class="mb-12" aria-labelledby="specifications">
           <h4
             id="specifications"
             class="mb-2 font-medium text-lg text-gray-900"
