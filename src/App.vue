@@ -263,9 +263,6 @@ export default {
     }
   },
   methods: {
-    activeDescendantForGroup(group) {
-      return this.createOptionId(group, this.selectedConfiguration[group]);
-    },
     createOptionId(group, { label }) {
       return `${group}-${label}`.replace(/\s/g, "");
     },
