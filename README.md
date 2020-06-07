@@ -15,8 +15,9 @@
 
 - Finding the right ARIA roles for this was challenging. It was a toss up between carousel and tablist. In the end,
   I went with tablist because the behaviour seemed to align a bit better, and honestly, the documentation was better.
-  However, the `tablist` spec uses tabs to enter the `tablist`, and then the keyboard to navigate from there. That
-  didn't feel correct for my purposes, so I stuck with `tab` to cycle, but that may be a mistake.
+  That said, I think `carousel` may provide a better experience for screen readers. The `tablist` spec uses tabs to
+  enter the `tablist`, and then the keyboard to navigate from there. That didn't feel correct for my purposes, so I
+  stuck with `tab` to cycle, but that may be a mistake.
 
 - My instinct was also to use a `<nav>` for the list of thumbnails, but you can't assign a `<nav>` the role of `tablist`,
   because it implicitly has the role of `nav`. This seems a bit ridiculous, because it's a far more semantic element than
