@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div role="tabpanel" aria-label="View images of the Kemper Profiler.">
+    <div
+      id="GalleryTabPanel"
+      role="tabpanel"
+      aria-label="View images of the Kemper Profiler."
+    >
       <img
         :src="imgSrc(currentImage.src, 600)"
         :srcset="imgSrcSet(currentImage.src, 600)"
@@ -10,7 +14,6 @@
     </div>
     <div
       class="flex flex-row justify-between space-x-4"
-      id="GalleryTabPanel"
       role="tablist"
       aria-label="Image Gallery Thumbnails"
     >

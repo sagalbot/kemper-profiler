@@ -15,9 +15,7 @@
       </header>
 
       <div class="relative lg:flex flex-row items-start">
-        <ImageGallery
-          class="lg:w-1/2 lg:sticky top-8 mb-8 lg:mb-0 lg:mr-8 flex-grow-0"
-        />
+        <ImageGallery class="lg:w-1/2 lg:sticky top-8 mb-8 lg:mb-0 lg:mr-8" />
         <div class="lg:w-1/2">
           <section class="mb-12" aria-label="Product Description">
             <h3 class="flex flex-col mb-6">
@@ -154,7 +152,7 @@
           <div class="hidden sm:flex flex-col lg:w-1/2 xl:w-64">
             <div class="flex items-center">
               <GlobeIcon class="h-5 w-5 mr-3 text-gray-400" />
-              <h5 class="text-gray-900 text-sm font-medium">Free Shipping</h5>
+              <h4 class="text-gray-900 text-sm font-medium">Free Shipping</h4>
             </div>
             <p class="hidden lg:block ml-8 mt-1 text-gray-500 text-sm">
               Get 2-day free shipping anywhere in North America.
@@ -163,7 +161,7 @@
           <div class="hidden sm:flex flex-col lg:w-1/2 xl:w-64">
             <div class="flex items-center">
               <ShieldIcon class="h-5 w-5 mr-3 text-gray-400" />
-              <h5 class="text-gray-900 text-sm font-medium">2 Year Warranty</h5>
+              <h4 class="text-gray-900 text-sm font-medium">2 Year Warranty</h4>
             </div>
             <p class="hidden lg:block ml-8 mt-1 text-gray-500 text-sm">
               If anything goes wrong in the first two years, we'll replace it
