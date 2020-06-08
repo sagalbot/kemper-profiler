@@ -13,8 +13,5 @@ module.exports = {
       }
     }
   },
-  variants: {
-    margin: ["responsive", "first", "last"]
-  },
   plugins: [require("@tailwindcss/ui")]
 };
