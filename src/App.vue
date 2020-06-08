@@ -1,6 +1,8 @@
 <template>
   <article class="pt-12 sm:pt-18">
-    <div class="mx-auto px-4 sm:px-12 md:px-28 lg:px-8 max-w-screen-xl">
+    <div
+      class="mx-auto px-4 sm:px-12 md:px-28 lg:px-8 max-w-screen-xl mb-32 sm:mb-40 lg:mb-32"
+    >
       <header class="border-b border-gray-300 mb-8 sm:mb-6 lg:mb-12">
         <h1
           class="font-extrabold text-gray-900 text-4xl tracking-tight leading-tight mb-4 sm:mb-3"
@@ -12,7 +14,7 @@
         </h2>
       </header>
 
-      <div class="relative lg:flex flex-row items-start mb-32">
+      <div class="relative lg:flex flex-row items-start">
         <ImageGallery class="lg:w-1/2 lg:sticky top-8 mb-8 lg:mb-0 lg:mr-8" />
         <div class="lg:w-1/2">
           <section class="mb-12" aria-label="Product Description">
@@ -116,59 +118,23 @@
             >
               Specifications
             </h3>
-            <dl class="text-gray-900 text-sm grid grid-cols-3 gap-0">
-              <dt class="py-5 font-medium border-b border-t border-gray-200">
-                Amp Models
-              </dt>
-              <dd
-                class="py-5 col-span-2 text-right border-b border-t border-gray-200"
-              >
-                200
-              </dd>
-
-              <dt class="py-5 font-medium border-b border-gray-200">
-                Effects Loop
-              </dt>
-              <dd class="py-5 col-span-2 text-right border-b border-gray-200">
-                Yes
-              </dd>
-
-              <dt class="py-5 font-medium border-b border-gray-200">Inputs</dt>
-              <dd class="py-5 col-span-2 text-right border-b border-gray-200">
-                2 x 1/4”
-              </dd>
-
-              <dt class="py-5 font-medium border-b border-gray-200">Outputs</dt>
-              <dd class="py-5 col-span-2 text-right border-b border-gray-200">
-                1 x 1/4”, 2 x XLR, 2 x 1/4”
-              </dd>
-
-              <dt class="py-5 font-medium border-b border-gray-200">
-                MIDI I/O
-              </dt>
-              <dd class="py-5 col-span-2 text-right border-b border-gray-200">
-                In/Out/Thru
-              </dd>
-
-              <dt class="py-5 font-medium border-b border-gray-200">Height</dt>
-              <dd class="py-5 col-span-2 text-right border-b border-gray-200">
-                8.54”
-              </dd>
-
-              <dt class="py-5 font-medium border-b border-gray-200">Width</dt>
-              <dd class="py-5 col-span-2 text-right border-b border-gray-200">
-                14.88”
-              </dd>
-
-              <dt class="py-5 font-medium border-b border-gray-200">Depth</dt>
-              <dd class="py-5 col-span-2 text-right border-b border-gray-200">
-                6.81”
-              </dd>
-
-              <dt class="py-5 font-medium border-b border-gray-200">Weight</dt>
-              <dd class="py-5 col-span-2 text-right border-b border-gray-200">
-                11.73 lbs
-              </dd>
+            <dl class="text-gray-900 text-sm grid grid-cols-3">
+              <!-- eslint-disable vue/require-v-for-key -->
+              <template v-for="(term, declaration, index) in specifications">
+                <dt
+                  class="font-medium py-5 border-b border-gray-200"
+                  :class="{ 'border-t': index === 0 }"
+                >
+                  {{ declaration }}
+                </dt>
+                <dd
+                  class="py-5 col-span-2 text-right border-b border-gray-200"
+                  :class="{ 'border-t': index === 0 }"
+                >
+                  {{ term }}
+                </dd>
+              </template>
+              <!-- eslint-enable -->
             </dl>
           </section>
         </div>
@@ -241,6 +207,8 @@ import {
   defaultConfiguration
 } from "./fixtures/configuration";
 
+import { specifications } from "./fixtures/specifications";
+
 export default {
   name: "App",
   components: { Selectable, ImageGallery, GlobeIcon, ShieldIcon },
@@ -248,6 +216,7 @@ export default {
     selectedConfiguration: defaultConfiguration
   }),
   computed: {
+    specifications: () => specifications,
     configurationGroups: () => configurationGroups,
     price() {
       return Object.keys(this.selectedConfiguration)
