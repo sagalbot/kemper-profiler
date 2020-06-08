@@ -82,9 +82,13 @@ There's a few ways to solve this problem:
 
 - Starting price from the header doesn't match the base price in the footer when base config is selected, but I figured that's not important.
 
-- "Need a financing?" Is in the designs. Figured it's a typo.
+- "Need a financing?" is in the designs. Figured it's a typo.
 
 ## Browsers
 
 - I develop in Firefox, but did a final pass in Chrome. I doubt there's any cross-browser issues, but if you notice something
   weird, maybe give it a go in FF.
+
+## Semantic Outline
+
+![image](https://user-images.githubusercontent.com/692538/83982098-84a48c00-a8d8-11ea-9f9d-63622a009a0c.png)
