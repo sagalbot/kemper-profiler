@@ -77,6 +77,8 @@ There's a few ways to solve this problem:
 
 - Not much to note here, other than how awesome `grid` works for definition lists!
 
+- I [tried to use `divide-y` on the definition list](https://github.com/sagalbot/kemper-profiler/pull/49#issuecomment-640379288), it almost works. The first child doesn't get a border.
+
 ## Footer
 
 - During accessibility testing I learned that SVGs should have `role="img"` and `<title>` tags as the alternative to `alt`.
@@ -93,4 +95,3 @@ There's a few ways to solve this problem:
 ## Semantic Outline
 
 ![image](https://user-images.githubusercontent.com/692538/83994909-a881c500-a90c-11ea-9d85-d58b9a5737f0.png)
-
