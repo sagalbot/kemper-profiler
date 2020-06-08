@@ -9,7 +9,7 @@
 
 - There are a few instances where spacing in Figma does not align with Tailwind values. Normally when I encounter
   these, I shoot a note over to the designer to see if it's intentional. In this case, I took my best guess as to
-  wheter something was intentional, or if I should round to the nearest value.
+  whether something was intentional, or if I should round to the nearest value.
 
 ## Image Gallery
 
