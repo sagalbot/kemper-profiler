@@ -27,6 +27,8 @@
   but you can't assign `figure` a role of `tabpanel`, so I'm stuck throwing `divs` around when it seems like there's
   a more semantic option.
 
+- The images have all been optimized, and use `srcset` to load the proper image resolution for a given display.
+
 ## Selectable Options Border Size
 
 The image thumbnails and configuration options share nearly identical border properties. All the states except for

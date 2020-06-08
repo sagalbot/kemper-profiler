@@ -2,7 +2,8 @@
   <div>
     <div role="tabpanel" aria-label="View images of the Kemper Profiler.">
       <img
-        :src="currentImage.src"
+        :src="imgSrc(currentImage.src, 600)"
+        :srcset="imgSrcSet(currentImage.src, 600)"
         :alt="currentImage.alt"
         class="mb-4 py-2 sm:py-3 border border-gray-200 rounded-lg shadow-sm"
       />
@@ -26,7 +27,8 @@
         aria-controls="GalleryTabPanel"
       >
         <img
-          :src="src"
+          :src="imgSrc(src, 190)"
+          :srcset="imgSrcSet(src, 190)"
           :alt="alt"
           class="pointer-events-none object-cover h-full w-full"
         />
@@ -49,6 +51,16 @@ export default {
     images: () => images,
     currentImage() {
       return this.images[this.currentImageKey];
+    }
+  },
+  methods: {
+    imgSrc(filename, size) {
+      return `/img/optimized/${filename}-${size}.jpg`;
+    },
+    imgSrcSet(filename, size) {
+      return [2, 3].reduce((srcSet, res) => {
+        return `${srcSet}, /img/optimized/${filename}-${size}@${res}x.jpg ${res}x`;
+      }, `/img/optimized/${filename}-${size}.jpg 1x`);
     }
   }
 };
