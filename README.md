@@ -92,4 +92,5 @@ There's a few ways to solve this problem:
 
 ## Semantic Outline
 
-![image](https://user-images.githubusercontent.com/692538/83982098-84a48c00-a8d8-11ea-9f9d-63622a009a0c.png)
+![image](https://user-images.githubusercontent.com/692538/83994909-a881c500-a90c-11ea-9d85-d58b9a5737f0.png)
+
