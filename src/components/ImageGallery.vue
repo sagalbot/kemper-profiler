@@ -6,8 +6,8 @@
       aria-label="View images of the Kemper Profiler."
     >
       <img
-        :src="imgSrc(currentImage.src, 600)"
-        :srcset="imgSrcSet(currentImage.src, 600)"
+        :src="imgSrc(currentImage.src, 800)"
+        :srcset="imgSrcSet(currentImage.src, 800)"
         :alt="`Large image of ${currentImage.alt}`"
         class="mb-4 py-2 sm:py-3 border border-gray-200 rounded-lg shadow-sm"
       />
@@ -30,8 +30,8 @@
         aria-controls="GalleryTabPanel"
       >
         <img
-          :src="imgSrc(src, 190)"
-          :srcset="imgSrcSet(src, 190)"
+          :src="imgSrc(src, 260)"
+          :srcset="imgSrcSet(src, 260)"
           :alt="alt"
           class="pointer-events-none object-cover h-full w-full"
         />
