@@ -180,7 +180,7 @@
       class="bg-gray-50 border-t border-gray-200 py-6 w-full fixed bottom-0"
     >
       <div
-        class="mx-auto px-4 sm:px-12 md:px-28 max-w-screen-xl flex items-center justify-end sm:justify-between lg:space-x-8"
+        class="mx-auto px-4 sm:px-12 md:px-28 lg:px-8 max-w-screen-xl flex items-center justify-end sm:justify-between lg:space-x-8"
       >
         <div
           class="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-8 lg:w-2/3"
