@@ -27,7 +27,8 @@
   but you can't assign `figure` a role of `tabpanel`, so I'm stuck throwing `divs` around when it seems like there's
   a more semantic option.
 
-- The images have all been optimized, and use `srcset` to load the proper image resolution for a given display.
+- The images have all been optimized, and use `srcset` to load the proper image resolution for a given display. The initial images
+  are preloaded with `rel="preload"` links in the header.
 
 ## Selectable Options Border Size
 
