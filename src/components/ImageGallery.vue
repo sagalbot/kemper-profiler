@@ -8,7 +8,7 @@
       <img
         :src="imgSrc(currentImage.src, 600)"
         :srcset="imgSrcSet(currentImage.src, 600)"
-        :alt="currentImage.alt"
+        :alt="`Large image of ${currentImage.alt}`"
         class="mb-4 py-2 sm:py-3 border border-gray-200 rounded-lg shadow-sm"
       />
     </div>
