@@ -1,7 +1,7 @@
 <template>
   <article class="pt-12 sm:pt-18">
     <div class="mx-auto px-4 sm:px-12 md:px-28 lg:px-8 max-w-screen-xl">
-      <header class="border-b border-gray-300 mb-8">
+      <header class="border-b border-gray-300 mb-8 sm:mb-6 lg:mb-12">
         <h1
           class="font-extrabold text-gray-900 text-4xl tracking-tight leading-tight mb-4 sm:mb-3"
         >
