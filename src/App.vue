@@ -1,6 +1,8 @@
 <template>
   <article class="pt-12 sm:pt-18">
-    <div class="mx-auto px-4 sm:px-12 md:px-28 lg:px-8 max-w-screen-xl">
+    <div
+      class="mx-auto px-4 sm:px-12 md:px-28 lg:px-8 max-w-screen-xl mb-32 sm:mb-40 lg:mb-32"
+    >
       <header class="border-b border-gray-300 mb-8 sm:mb-6 lg:mb-12">
         <h1
           class="font-extrabold text-gray-900 text-4xl tracking-tight leading-tight mb-4 sm:mb-3"
@@ -12,7 +14,7 @@
         </h2>
       </header>
 
-      <div class="relative lg:flex flex-row items-start mb-32">
+      <div class="relative lg:flex flex-row items-start">
         <ImageGallery
           class="lg:w-1/2 lg:sticky top-8 mb-8 lg:mb-0 lg:mr-8 flex-grow-0"
         />
@@ -118,15 +120,19 @@
             >
               Specifications
             </h3>
-            <dl
-              class="text-gray-900 text-sm grid grid-cols-3 gap-0 divide-y divide-gray-200"
-            >
+            <dl class="text-gray-900 text-sm grid grid-cols-3">
               <!-- eslint-disable vue/require-v-for-key -->
-              <template v-for="(term, declaration) in specifications">
-                <dt class="py-5 font-medium ">
+              <template v-for="(term, declaration, index) in specifications">
+                <dt
+                  class="font-medium py-5 border-b border-gray-200"
+                  :class="{ 'border-t': index === 0 }"
+                >
                   {{ declaration }}
                 </dt>
-                <dd class="py-5 col-span-2 text-right">
+                <dd
+                  class="py-5 col-span-2 text-right border-b border-gray-200"
+                  :class="{ 'border-t': index === 0 }"
+                >
                   {{ term }}
                 </dd>
               </template>
