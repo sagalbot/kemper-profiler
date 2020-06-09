@@ -28,7 +28,7 @@
   a more semantic option.
 
 - The images have all been optimized, and use `srcset` to load the proper image resolution for a given display. The initial images
-  are preloaded with `rel="preload"` links in the header.
+  are preloaded with `rel="preload"` links in the header. *I noticed after submitting that I was wrong about the potential maximum size for the images, which resulted in [#52](https://github.com/sagalbot/kemper-profiler/issues/52) and is fixed by [#53](https://github.com/sagalbot/kemper-profiler/pull/53).*
 
 ## Selectable Options Border Size
 
